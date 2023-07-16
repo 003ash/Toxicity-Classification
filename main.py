@@ -17,6 +17,9 @@ hate_types = ['identity_hate', 'toxic', 'severe_toxic', 'obscene',
 
 loaded_models = []
 
+with open("models/transform_function.pickle", 'rb') as file:
+    transform_function = pickle.load(file)
+
 for hate in hate_types:
     loaded_model = xgb.Booster()
     loaded_model.load_model(f"{hate}_xgboost.json")
